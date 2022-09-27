@@ -1,0 +1,44 @@
+name: sample_fire_base
+description: A new Flutter project.
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.1 <3.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  firebase_auth: ^3.9.0
+  firebase_core: ^1.22.0
+  get: ^4.6.5
+  google_fonts: ^3.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+
+  uses-material-design: true
+
+
+  assets:
+  #images
+    - assets/images/274.jpg
+    - assets/images/camera.png
+  #icons
+    - assets/icons/edit.png
+    - assets/icons/email.png
+    - assets/icons/padlock.png
+    - assets/icons/telephone.png
+    - assets/icons/user.png
+    - assets/icons/Ellipse 9.png
+

@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sample_fire_base/decision_page/decision_page.dart';
+import 'package:sample_fire_base/auth/decision_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

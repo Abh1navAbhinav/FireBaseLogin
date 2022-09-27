@@ -12,7 +12,7 @@ class SignUpButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        Get.off(
+        Get.to(
           const ViewAccount(),
         );
       },

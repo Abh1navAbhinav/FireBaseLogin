@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 class SigninController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  var isObscure = false.obs;
 
   Future signIn() async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(

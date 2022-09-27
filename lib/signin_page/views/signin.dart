@@ -6,9 +6,9 @@ import 'package:sample_fire_base/signin_page/views/widgets/sigin_button.dart';
 import 'package:sample_fire_base/signup_page/views/signup.dart';
 
 class SigninPage extends GetView<SigninController> {
-    SigninPage({super.key});
+  SigninPage({super.key});
 
-  final  signinController = Get.put(SigninController());
+  final signinController = Get.put(SigninController());
 
   @override
   Widget build(BuildContext context) {
@@ -49,21 +49,34 @@ class SigninPage extends GetView<SigninController> {
                     const SizedBox(
                       height: 50,
                     ),
-                    TextFormField(
-                      // obscuringCharacter: "X",
-                      controller: controller.passwordController,
-                      
-                      decoration: InputDecoration(
-                        
-                        hintText: 'Password',
-                        icon: const SizedBox(),
-                        border: InputBorder.none,
-                        hintStyle: GoogleFonts.roboto(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12,
+                    Obx(
+                      () => TextFormField(
+                        // obscuringCharacter: "X",
+                        controller: controller.passwordController,
+
+                        decoration: InputDecoration(
+                          hintText: 'Password',
+                          icon: const SizedBox(),
+                          border: InputBorder.none,
+                          hintStyle: GoogleFonts.roboto(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12,
+                          ),
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              controller.isObscure.value =
+                                  !controller.isObscure.value;
+                            },
+                            icon: Icon(
+                              Icons.remove_red_eye_outlined,
+                              color: controller.isObscure.value
+                                  ? Colors.grey
+                                  : Colors.black,
+                            ),
+                          ),
                         ),
+                        obscureText: controller.isObscure.value,
                       ),
-                      obscureText: true,
                     ),
                     const Divider(
                       height: 0,

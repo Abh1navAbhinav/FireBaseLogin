@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sample_fire_base/view_account_page/views/view_account.dart';
+import 'package:sample_fire_base/signin_page/controllers/signin_controller.dart';
 
-class SignInButton extends StatelessWidget {
+class SignInButton extends GetView<SigninController> {
   const SignInButton({
     Key? key,
   }) : super(key: key);
@@ -12,7 +12,9 @@ class SignInButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        Get.off(const ViewAccount());
+                        controller.signIn();  
+
+        // Get.off(const ViewAccount());
       },
       style: ButtonStyle(
         shape: MaterialStateProperty.all(

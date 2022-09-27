@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class EditButton extends StatelessWidget {
   const EditButton({
@@ -8,8 +10,22 @@ class EditButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        TextButton.icon(
+          onPressed: () {
+            FirebaseAuth.instance.signOut();
+          },
+          icon: const Icon(
+            Icons.logout,
+            color: Colors.black,
+          ),
+          label: Text(
+            "Log Out",
+            style: GoogleFonts.roboto(
+                fontWeight: FontWeight.bold, color: Colors.black),
+          ),
+        ),
         GestureDetector(
           onTap: () {},
           child: const Image(

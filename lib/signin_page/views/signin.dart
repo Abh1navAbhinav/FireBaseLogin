@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sample_fire_base/signin_page/controllers/signin_controller.dart';
 import 'package:sample_fire_base/signin_page/views/widgets/sigin_button.dart';
 import 'package:sample_fire_base/signup_page/views/signup.dart';
 
-class SigninPage extends GetView<SigninPage> {
-  const SigninPage({super.key});
+class SigninPage extends GetView<SigninController> {
+    SigninPage({super.key});
 
-  // final SigninPage signinController = Get.put(SigninPage());
+  final  signinController = Get.put(SigninController());
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +30,9 @@ class SigninPage extends GetView<SigninPage> {
                 child: Column(
                   children: [
                     TextFormField(
+                      controller: controller.emailController,
                       decoration: InputDecoration(
-                        hintText: 'Username',
+                        hintText: 'E-mail',
                         icon: const SizedBox(),
                         border: InputBorder.none,
                         hintStyle: GoogleFonts.roboto(
@@ -48,7 +50,11 @@ class SigninPage extends GetView<SigninPage> {
                       height: 50,
                     ),
                     TextFormField(
+                      // obscuringCharacter: "X",
+                      controller: controller.passwordController,
+                      
                       decoration: InputDecoration(
+                        
                         hintText: 'Password',
                         icon: const SizedBox(),
                         border: InputBorder.none,

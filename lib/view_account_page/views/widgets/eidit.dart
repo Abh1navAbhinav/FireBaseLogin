@@ -27,7 +27,9 @@ class EditButton extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            
+          },
           child: const Image(
             image: AssetImage(
               'assets/icons/Ellipse 9.png',

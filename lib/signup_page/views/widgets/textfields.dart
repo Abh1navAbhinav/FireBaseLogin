@@ -7,9 +7,11 @@ class TextFields extends StatelessWidget {
     Key? key,
     required this.hint,
     required this.image,
+    required this.controller,
   }) : super(key: key);
   String hint;
   String image;
+  TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +21,7 @@ class TextFields extends StatelessWidget {
         vertical: 15,
       ),
       child: TextFormField(
+        controller: controller,
         decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),

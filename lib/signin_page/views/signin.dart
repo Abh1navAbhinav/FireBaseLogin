@@ -93,7 +93,7 @@ class SigninPage extends GetView<SigninController> {
                     TextButton(
                       onPressed: () {
                         Get.to(
-                          () => const SignUp(),
+                          () => SignUp(),
                         );
                       },
                       child: Text(

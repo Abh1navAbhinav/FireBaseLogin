@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sample_fire_base/view_account_page/views/view_account.dart';
+import 'package:sample_fire_base/auth/model.dart';
+import 'package:sample_fire_base/signup_page/controllers/signup_controler.dart';
 
-class SignUpButton extends StatelessWidget {
+class SignUpButton extends GetView<SignupController> {
   const SignUpButton({
     Key? key,
   }) : super(key: key);
@@ -11,10 +12,20 @@ class SignUpButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
-        Get.to(
-          const ViewAccount(),
+      onPressed: () async {
+        // Get.to(
+        //   const ViewAccount(),
+        // );
+
+        final model = ModelClass(
+          mob: controller.mobileController.text.trim(),
+          name: controller.usernameController.text.trim(),
         );
+        await controller.signup(
+          controller.emailController.text.trim(),
+          controller.passwordController.text.trim(),
+        );
+        await controller.addToDatabase(model);
       },
       style: ButtonStyle(
         shape: MaterialStateProperty.all(

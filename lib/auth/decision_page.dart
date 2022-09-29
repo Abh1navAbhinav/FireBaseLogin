@@ -12,7 +12,7 @@ class DecisionPage extends StatelessWidget {
       body: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
-          return snapshot.hasData ? const ViewAccount() : SigninPage();
+          return snapshot.hasData ?  ViewAccount() : SigninPage();
         },
       ),
     );

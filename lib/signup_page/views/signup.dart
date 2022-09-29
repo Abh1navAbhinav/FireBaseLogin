@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sample_fire_base/signin_page/views/signin.dart';
+import 'package:sample_fire_base/signup_page/controllers/signup_controler.dart';
 import 'package:sample_fire_base/signup_page/views/widgets/profile_image.dart';
 import 'package:sample_fire_base/signup_page/views/widgets/signup_button.dart';
 import 'package:sample_fire_base/signup_page/views/widgets/textfields.dart';
 
-class SignUp extends StatelessWidget {
-  const SignUp({super.key});
+class SignUp extends GetView<SignupController> {
+   SignUp({super.key});
+  final signupController = Get.put(SignupController()); 
 
   @override
   Widget build(BuildContext context) {
@@ -20,18 +22,22 @@ class SignUp extends StatelessWidget {
               const Center(child: ProfileImage()),
               const SizedBox(height: 15),
               TextFields(
+                controller: controller.usernameController,
                 hint: 'Username',
                 image: 'assets/icons/user.png',
               ),
               TextFields(
+                controller: controller.mobileController,
                 hint: 'Mobile number',
                 image: "assets/icons/telephone.png",
               ),
               TextFields(
+                controller: controller.emailController,
                 hint: 'E-Mail',
                 image: "assets/icons/email.png",
               ),
               TextFields(
+                controller: controller.passwordController,
                 hint: 'Password',
                 image: "assets/icons/padlock.png",
               ),
@@ -46,7 +52,7 @@ class SignUp extends StatelessWidget {
               TextButton(
                 onPressed: () {
                   Get.to(
-                    () =>   SigninPage(),
+                    () => SigninPage(),
                   );
                 },
                 child: Text(

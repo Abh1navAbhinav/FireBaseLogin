@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:sample_fire_base/auth/model.dart';
 import 'package:sample_fire_base/view_account_page/controllers/viewcontroller.dart';
 import 'package:sample_fire_base/view_account_page/views/widgets/eidit.dart';
-import 'package:sample_fire_base/view_account_page/views/widgets/profile.dart';
 import 'package:sample_fire_base/view_account_page/views/widgets/update_button.dart';
 import 'package:sample_fire_base/view_account_page/views/widgets/view_textfield.dart';
 
@@ -31,37 +30,52 @@ class ViewAccount extends GetView<Viewcontroller> {
                   }).toList();
                   controller.assignToController(newList);
                 }
-                return Column(
-                  children: [
-                    const EditButton(),
-                    const SizedBox(height: 40),
-                    const Profile(),
-                    const SizedBox(height: 15),
-                    ViewTextField(
-                      controllers: controller.usernameController,
-                      hint: 'Username',
-                      image: 'assets/icons/user.png',
+                return Container(
+                  width: 360,
+                  height: 800,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(
+                        'assets/images/274.jpg',
+                      ),
+                      fit: BoxFit.cover
                     ),
-                    ViewTextField(
-                      controllers: controller.mobileController,
-                      hint: 'Mobile number',
-                      image: "assets/icons/telephone.png",
+                  ),
+                  child: Container(
+                    color: const Color.fromARGB(93, 0, 0, 0),
+                    child: Column(
+                      children: [
+                        const EditButton(),
+                        const SizedBox(height: 40),
+                        // const Profile(),
+                        const SizedBox(height: 120),
+                        ViewTextField(
+                          controllers: controller.usernameController,
+                          hint: 'Username',
+                          image: 'assets/icons/user.png',
+                        ),
+                        ViewTextField(
+                          controllers: controller.mobileController,
+                          hint: 'Mobile number',
+                          image: "assets/icons/telephone.png",
+                        ),
+                        ViewTextField(
+                          controllers: controller.ageController,
+                          hint: 'Age',
+                          image: 'assets/icons/age.png',
+                        ),
+                        ViewTextField(
+                          controllers: controller.domainController,
+                          hint: 'Domain',
+                          image: 'assets/icons/job.png',
+                        ),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        const UpdateButton(),
+                      ],
                     ),
-                    ViewTextField(
-                      controllers: controller.ageController,
-                      hint: 'Age',
-                      image: 'assets/icons/age.png',
-                    ),
-                    ViewTextField(
-                      controllers: controller.domainController,
-                      hint: 'Domain',
-                      image: 'assets/icons/job.png',
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    const UpdateButton(),
-                  ],
+                  ),
                 );
               }),
         ),

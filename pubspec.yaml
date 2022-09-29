@@ -35,6 +35,7 @@ flutter:
   #images
     - assets/images/274.jpg
     - assets/images/camera.png
+    - assets/images/3574.jpg
   #icons
     - assets/icons/edit.png
     - assets/icons/email.png

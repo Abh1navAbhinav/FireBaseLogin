@@ -69,13 +69,13 @@ class SigninPage extends GetView<SigninController> {
                             },
                             icon: Icon(
                               Icons.remove_red_eye_outlined,
-                              color: controller.isObscure.value
+                              color: !controller.isObscure.value
                                   ? Colors.grey
                                   : Colors.black,
                             ),
                           ),
                         ),
-                        obscureText: controller.isObscure.value,
+                        obscureText: !controller.isObscure.value,
                       ),
                     ),
                     const Divider(

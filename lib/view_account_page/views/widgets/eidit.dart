@@ -31,7 +31,7 @@ class EditButton extends GetView<Viewcontroller> {
         Obx(
           () => Visibility(
             visible: !controller.isEditing.value,
-            child: GestureDetector(
+            child: /* GestureDetector(
               onTap: () {
                 controller.isEditing.value = true;
               },
@@ -41,6 +41,24 @@ class EditButton extends GetView<Viewcontroller> {
                 ),
                 height: 54,
                 width: 56,
+              ),
+            ), */
+                CircleAvatar(
+              radius: 28,
+              backgroundColor: Colors.black,
+              child: CircleAvatar(
+                radius: 23,
+                backgroundColor: const Color.fromARGB(155, 255, 253, 253),
+                child: IconButton(
+                  onPressed: () {
+                    controller.isEditing.value = true;
+                  },
+                  icon: const Icon(
+                    Icons.edit,
+                    size: 30,
+                    color: Colors.black,
+                  ),
+                ),
               ),
             ),
           ),

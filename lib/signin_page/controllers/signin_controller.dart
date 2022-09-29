@@ -7,12 +7,12 @@ class SigninController extends GetxController {
   final passwordController = TextEditingController();
   var isObscure = false.obs;
 
+
   Future signIn() async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: emailController.text.trim(),
       password: passwordController.text.trim(),
     );
-    update();
   }
 
 

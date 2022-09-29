@@ -9,13 +9,13 @@ class SignupController extends GetxController {
   final mobileController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final domainController = TextEditingController();
+  final ageController = TextEditingController();
 
-
-
-  signup(email, password) async {
+  signup() async {
     await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: email,
-      password: password,
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
     );
   }
 
@@ -26,5 +26,27 @@ class SignupController extends GetxController {
     model.id = generatedId.id;
     await users.doc(generatedId.id).update(model.toJson());
     Get.back();
+  }
+
+  clearAllController() {
+    usernameController.clear();
+    mobileController.clear();
+    emailController.clear();
+    passwordController.clear();
+    domainController.clear();
+    ageController.clear();
+  }
+
+  // life cycle methods
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    mobileController.dispose();
+    usernameController.dispose();
+    domainController.dispose();
+    ageController.dispose();
+    super.dispose();
   }
 }

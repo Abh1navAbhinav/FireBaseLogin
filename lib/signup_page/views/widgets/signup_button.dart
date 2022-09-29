@@ -13,19 +13,15 @@ class SignUpButton extends GetView<SignupController> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () async {
-        // Get.to(
-        //   const ViewAccount(),
-        // );
-
         final model = ModelClass(
           mob: controller.mobileController.text.trim(),
           name: controller.usernameController.text.trim(),
+          age: controller.ageController.text.trim(),
+          domain: controller.domainController.text.trim(),
         );
-        await controller.signup(
-          controller.emailController.text.trim(),
-          controller.passwordController.text.trim(),
-        );
+        await controller.signup();
         await controller.addToDatabase(model);
+        controller.clearAllController();
       },
       style: ButtonStyle(
         shape: MaterialStateProperty.all(

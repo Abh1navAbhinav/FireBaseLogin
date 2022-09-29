@@ -13,7 +13,8 @@ class ViewAccount extends GetView<Viewcontroller> {
   ViewAccount({super.key});
   final viewcontroller = Get.put(Viewcontroller());
   final signupcontroller = Get.put(SignupController());
-  final CollectionReference user = FirebaseFirestore.instance.collection(FirebaseAuth.instance.currentUser!.email.toString());
+  final CollectionReference user = FirebaseFirestore.instance
+      .collection(FirebaseAuth.instance.currentUser!.email.toString());
 
   @override
   Widget build(BuildContext context) {
@@ -22,49 +23,54 @@ class ViewAccount extends GetView<Viewcontroller> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: StreamBuilder(
-            stream: user.snapshots(),
-            builder: (context,AsyncSnapshot<QuerySnapshot> streamSnapshot) {
-              if(streamSnapshot.hasData){
-                final newList = streamSnapshot.data!.docs.map((e) {
-                  return ModelClass.fromjson(e.data()as Map<String, dynamic>);
-                }) .toList();
-                signupcontroller.mobileController.text = newList.first.mob.toString();
-                signupcontroller.usernameController.text = newList.first.name.toString();
-                
-              }
-              return Column(
-                children: [
-                  const EditButton(),
-                  const SizedBox(height: 40),
-                  const Profile(),
-                  const SizedBox(height: 15),
-                  ViewTextField(
-                    controller: signupcontroller.usernameController,
-                    hint: 'Username',
-                    image: 'assets/icons/user.png',
-                  ),
-                  ViewTextField(
-                    controller: signupcontroller.mobileController,
-                    hint: 'Mobile number',
-                    image: "assets/icons/telephone.png",
-                  ),
-                  ViewTextField(
-                    controller: signupcontroller.emailController,
-                    hint: 'E-Mail',
-                    image: "assets/icons/email.png",
-                  ),
-                  ViewTextField(
-                    controller: signupcontroller.passwordController,
-                    hint: 'Password',
-                    image: "assets/icons/padlock.png",
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                ],
-              );
-            }
-          ),
+              stream: user.snapshots(),
+              builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
+                if (streamSnapshot.hasData) {
+                  final newList = streamSnapshot.data!.docs.map((e) {
+                    return ModelClass.fromjson(
+                        e.data() as Map<String, dynamic>);
+                  }).toList();
+                  signupcontroller.mobileController.text =
+                      newList.first.mob.toString();
+                  signupcontroller.usernameController.text =
+                      newList.first.name.toString();
+                  signupcontroller.ageController.text =
+                      newList.first.age.toString();
+                  signupcontroller.domainController.text =
+                      newList.first.domain.toString();
+                }
+                return Column(
+                  children: [
+                    const EditButton(),
+                    const SizedBox(height: 40),
+                    const Profile(),
+                    const SizedBox(height: 15),
+                    ViewTextField(
+                      controller: signupcontroller.usernameController,
+                      hint: 'Username',
+                      image: 'assets/icons/user.png',
+                    ),
+                    ViewTextField(
+                      controller: signupcontroller.mobileController,
+                      hint: 'Mobile number',
+                      image: "assets/icons/telephone.png",
+                    ),
+                    ViewTextField(
+                      controller: signupcontroller.ageController,
+                      hint: 'Age',
+                      image: 'assets/icons/age.png',
+                    ),
+                    ViewTextField(
+                      controller: signupcontroller.domainController,
+                      hint: 'Domain',
+                      image: 'assets/icons/job.png',
+                    ),
+                    const SizedBox(
+                      height: 50,
+                    ),
+                  ],
+                );
+              }),
         ),
       ),
     );

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sample_fire_base/signin_page/views/signin.dart';
 import 'package:sample_fire_base/signup_page/controllers/signup_controler.dart';
-import 'package:sample_fire_base/signup_page/views/widgets/profile_image.dart';
 import 'package:sample_fire_base/signup_page/views/widgets/signup_button.dart';
 import 'package:sample_fire_base/signup_page/views/widgets/textfields.dart';
 
@@ -19,7 +18,7 @@ class SignUp extends GetView<SignupController> {
           child: Column(
             children: [
               const SizedBox(height: 10),
-              const Center(child: ProfileImage()),
+              // const Center(child: ProfileImage()),
               const SizedBox(height: 15),
               TextFields(
                 controller: controller.usernameController,
@@ -30,6 +29,16 @@ class SignUp extends GetView<SignupController> {
                 controller: controller.mobileController,
                 hint: 'Mobile number',
                 image: "assets/icons/telephone.png",
+              ),
+               TextFields(
+                controller: controller.ageController,
+                hint: 'Age',
+                image: 'assets/icons/age.png',
+              ),
+               TextFields(
+                controller: controller.domainController,
+                hint: 'Domain',
+                image: 'assets/icons/job.png',
               ),
               TextFields(
                 controller: controller.emailController,
@@ -51,9 +60,11 @@ class SignUp extends GetView<SignupController> {
               const SignUpButton(),
               TextButton(
                 onPressed: () {
+
                   Get.to(
                     () => SigninPage(),
                   );
+                  controller.clearAllController();
                 },
                 child: Text(
                   'Sign In',

@@ -9,6 +9,7 @@ class SigninPage extends GetView<SigninController> {
   SigninPage({super.key});
 
   final signinController = Get.put(SigninController());
+  final GlobalKey<FormState> formkeySignin = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class SigninPage extends GetView<SigninController> {
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: SizedBox(
                 child: Form(
-                  key: controller.formkey,
+                  key: formkeySignin,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: Column(
                     children: [
@@ -65,7 +66,7 @@ class SigninPage extends GetView<SigninController> {
                           // obscuringCharacter: "X",
                           controller: controller.passwordController,
                           autocorrect: true,
-                
+
                           decoration: InputDecoration(
                             hintText: 'Password',
                             icon: const SizedBox(),
@@ -87,8 +88,8 @@ class SigninPage extends GetView<SigninController> {
                               ),
                             ),
                           ),
-                          
-                           validator: (value) {
+
+                          validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'password is empty';
                             } else {
@@ -98,7 +99,6 @@ class SigninPage extends GetView<SigninController> {
                           obscureText: !controller.isObscure.value,
                         ),
                       ),
-                      
                       const Divider(
                         height: 0,
                         thickness: 2,
@@ -107,7 +107,9 @@ class SigninPage extends GetView<SigninController> {
                       const SizedBox(
                         height: 50,
                       ),
-                      const SignInButton(),
+                      SignInButton(
+                        formkey: formkeySignin,
+                      ),
                       const SizedBox(
                         height: 20,
                       ),

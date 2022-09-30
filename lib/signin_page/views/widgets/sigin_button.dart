@@ -3,16 +3,19 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sample_fire_base/signin_page/controllers/signin_controller.dart';
 
+// ignore: must_be_immutable
 class SignInButton extends GetView<SigninController> {
-  const SignInButton({
+  SignInButton({
     Key? key,
+    required this.formkey,
   }) : super(key: key);
+  GlobalKey<FormState> formkey;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () async {
-        if (controller.formkey.currentState!.validate()) {
+        if (formkey.currentState!.validate()) {
           await controller.signIn();
           controller.emailController.clear();
           controller.passwordController.clear();

@@ -5,9 +5,8 @@ import 'package:get/get.dart';
 class SigninController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final GlobalKey<FormState> formkey = GlobalKey<FormState>();
-  var isObscure = false.obs;
 
+  var isObscure = false.obs;
 
   Future signIn() async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -16,15 +15,12 @@ class SigninController extends GetxController {
     );
   }
 
-
-
   // life cycle methods
-  
+
   @override
   void dispose() {
-   emailController.dispose();
-   passwordController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
-  
 }

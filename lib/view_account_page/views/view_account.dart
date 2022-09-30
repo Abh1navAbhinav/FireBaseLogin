@@ -35,14 +35,13 @@ class ViewAccount extends GetView<Viewcontroller> {
                   height: 800,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(
-                        'assets/images/274.jpg',
-                      ),
-                      fit: BoxFit.cover
-                    ),
+                        image: AssetImage(
+                          'assets/images/274.jpg',
+                        ),
+                        fit: BoxFit.cover),
                   ),
                   child: Container(
-                    color: const Color.fromARGB(93, 0, 0, 0),
+                    color: const Color.fromARGB(103, 0, 0, 0),
                     child: Column(
                       children: [
                         const EditButton(),

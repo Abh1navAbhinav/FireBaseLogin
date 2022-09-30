@@ -47,7 +47,7 @@ class EditButton extends GetView<Viewcontroller> {
               radius: 28,
               backgroundColor: Colors.black,
               child: CircleAvatar(
-                radius: 23,
+                radius: 25,
                 backgroundColor: const Color.fromARGB(155, 255, 253, 253),
                 child: IconButton(
                   onPressed: () {

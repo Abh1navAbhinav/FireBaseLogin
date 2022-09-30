@@ -11,6 +11,7 @@ class SignupController extends GetxController {
   final passwordController = TextEditingController();
   final domainController = TextEditingController();
   final ageController = TextEditingController();
+  final GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   signup() async {
     await FirebaseAuth.instance.createUserWithEmailAndPassword(

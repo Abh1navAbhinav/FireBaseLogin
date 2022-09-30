@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 class SigninController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final GlobalKey<FormState> formkey = GlobalKey<FormState>();
   var isObscure = false.obs;
 
 

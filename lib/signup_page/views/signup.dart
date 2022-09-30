@@ -7,8 +7,8 @@ import 'package:sample_fire_base/signup_page/views/widgets/signup_button.dart';
 import 'package:sample_fire_base/signup_page/views/widgets/textfields.dart';
 
 class SignUp extends GetView<SignupController> {
-   SignUp({super.key});
-  final signupController = Get.put(SignupController()); 
+  SignUp({super.key});
+  final signupController = Get.put(SignupController());
 
   @override
   Widget build(BuildContext context) {
@@ -17,36 +17,57 @@ class SignUp extends GetView<SignupController> {
         child: SafeArea(
           child: Column(
             children: [
+              Container(
+                width: double.infinity,
+                height: 50,
+                color: Colors.black,
+                child: Center(
+                  child: Text(
+                    "Create new account",
+                    style: GoogleFonts.roboto(
+                      fontWeight: FontWeight.w800,
+                      color: Colors.white,
+                      fontSize: 30,
+                    ),
+                  ),
+                ),
+              ),
               const SizedBox(height: 10),
               // const Center(child: ProfileImage()),
               const SizedBox(height: 15),
               TextFields(
-                controller: controller.usernameController,
+                vaidator: "Username should is empty",
+                controllers: controller.usernameController,
                 hint: 'Username',
                 image: 'assets/icons/user.png',
               ),
               TextFields(
-                controller: controller.mobileController,
+                vaidator: "Mobile number is empty",
+                controllers: controller.mobileController,
                 hint: 'Mobile number',
                 image: "assets/icons/telephone.png",
               ),
-               TextFields(
-                controller: controller.ageController,
+              TextFields(
+                vaidator: "age is empty",
+                controllers: controller.ageController,
                 hint: 'Age',
                 image: 'assets/icons/age.png',
               ),
-               TextFields(
-                controller: controller.domainController,
+              TextFields(
+                vaidator: 'domain is empty',
+                controllers: controller.domainController,
                 hint: 'Domain',
                 image: 'assets/icons/job.png',
               ),
               TextFields(
-                controller: controller.emailController,
+                vaidator: 'email is empty',
+                controllers: controller.emailController,
                 hint: 'E-Mail',
                 image: "assets/icons/email.png",
               ),
               TextFields(
-                controller: controller.passwordController,
+                vaidator: 'Password is empty',
+                controllers: controller.passwordController,
                 hint: 'Password',
                 image: "assets/icons/padlock.png",
               ),
@@ -60,7 +81,6 @@ class SignUp extends GetView<SignupController> {
               const SignUpButton(),
               TextButton(
                 onPressed: () {
-
                   Get.to(
                     () => SigninPage(),
                   );

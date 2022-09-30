@@ -11,10 +11,12 @@ class SignInButton extends GetView<SigninController> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () async{
-      await  controller.signIn();
-        controller.emailController.clear();
-        controller.passwordController.clear();
+      onPressed: () async {
+        if (controller.formkey.currentState!.validate()) {
+          await controller.signIn();
+          controller.emailController.clear();
+          controller.passwordController.clear();
+        }
 
         // Get.off(const ViewAccount());
       },

@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sample_fire_base/signup_page/controllers/signup_controler.dart';
 
 // ignore: must_be_immutable
-class TextFields extends StatelessWidget {
+class TextFields extends GetView<SignupController> {
   TextFields({
     Key? key,
     required this.hint,
     required this.image,
-    required this.controller,
+    required this.controllers,
+    required this.vaidator,
   }) : super(key: key);
   String hint;
   String image;
-  TextEditingController controller;
+  String vaidator;
+  TextEditingController controllers;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,7 @@ class TextFields extends StatelessWidget {
         vertical: 15,
       ),
       child: TextFormField(
-        controller: controller,
+        controller: controllers,
         decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
@@ -42,6 +46,13 @@ class TextFields extends StatelessWidget {
             width: 30,
           ),
         ),
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return vaidator;
+          } else {
+            return null;
+          }
+        },
       ),
     );
   }

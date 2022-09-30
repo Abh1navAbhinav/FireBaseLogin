@@ -27,85 +27,107 @@ class SigninPage extends GetView<SigninController> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: SizedBox(
-                child: Column(
-                  children: [
-                    TextFormField(
-                      controller: controller.emailController,
-                      decoration: InputDecoration(
-                        hintText: 'E-mail',
-                        icon: const SizedBox(),
-                        border: InputBorder.none,
-                        hintStyle: GoogleFonts.roboto(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ),
-                    const Divider(
-                      height: 0,
-                      thickness: 2,
-                      color: Colors.black,
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    Obx(
-                      () => TextFormField(
-                        // obscuringCharacter: "X",
-                        controller: controller.passwordController,
-
+                child: Form(
+                  key: controller.formkey,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        controller: controller.emailController,
+                        autocorrect: true,
                         decoration: InputDecoration(
-                          hintText: 'Password',
+                          hintText: 'E-mail',
                           icon: const SizedBox(),
                           border: InputBorder.none,
                           hintStyle: GoogleFonts.roboto(
                             fontWeight: FontWeight.w400,
                             fontSize: 12,
                           ),
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              controller.isObscure.value =
-                                  !controller.isObscure.value;
-                            },
-                            icon: Icon(
-                              Icons.remove_red_eye_outlined,
-                              color: !controller.isObscure.value
-                                  ? Colors.grey
-                                  : Colors.black,
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'E-mail is empty';
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
+                      const Divider(
+                        height: 0,
+                        thickness: 2,
+                        color: Colors.black,
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      Obx(
+                        () => TextFormField(
+                          // obscuringCharacter: "X",
+                          controller: controller.passwordController,
+                          autocorrect: true,
+                
+                          decoration: InputDecoration(
+                            hintText: 'Password',
+                            icon: const SizedBox(),
+                            border: InputBorder.none,
+                            hintStyle: GoogleFonts.roboto(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                            ),
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                controller.isObscure.value =
+                                    !controller.isObscure.value;
+                              },
+                              icon: Icon(
+                                Icons.remove_red_eye_outlined,
+                                color: !controller.isObscure.value
+                                    ? Colors.grey
+                                    : Colors.black,
+                              ),
                             ),
                           ),
-                        ),
-                        obscureText: !controller.isObscure.value,
-                      ),
-                    ),
-                    const Divider(
-                      height: 0,
-                      thickness: 2,
-                      color: Colors.black,
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    const SignInButton(),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Get.to(
-                          () => SignUp(),
-                        );
-                      },
-                      child: Text(
-                        'Create new account',
-                        style: GoogleFonts.roboto(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 15,
-                          color: Colors.black,
+                          
+                           validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'password is empty';
+                            } else {
+                              return null;
+                            }
+                          },
+                          obscureText: !controller.isObscure.value,
                         ),
                       ),
-                    ),
-                  ],
+                      
+                      const Divider(
+                        height: 0,
+                        thickness: 2,
+                        color: Colors.black,
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      const SignInButton(),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Get.to(
+                            () => SignUp(),
+                          );
+                        },
+                        child: Text(
+                          'Create new account',
+                          style: GoogleFonts.roboto(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 15,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

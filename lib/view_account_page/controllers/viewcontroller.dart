@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,15 +14,18 @@ class Viewcontroller extends GetxController {
   final passwordController = TextEditingController();
   final domainController = TextEditingController();
   final ageController = TextEditingController();
+  late String id;
 
   updateToDatabase(ModelClass model) async {
     final CollectionReference users = FirebaseFirestore.instance
         .collection(FirebaseAuth.instance.currentUser!.email.toString());
     final id = model.id;
+    log(id.toString());
     await users.doc(id).update(model.toJson());
   }
 
-  assignToController(newList) {
+  assignToController(List<ModelClass> newList) {
+    id = newList[0].id.toString();
     mobileController.text = newList.first.mob.toString();
     usernameController.text = newList.first.name.toString();
     ageController.text = newList.first.age.toString();

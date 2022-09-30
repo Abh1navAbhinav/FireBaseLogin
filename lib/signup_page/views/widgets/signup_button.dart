@@ -19,11 +19,10 @@ class SignUpButton extends GetView<SignupController> {
           age: controller.ageController.text.trim(),
           domain: controller.domainController.text.trim(),
         );
-        if (controller.formkey.currentState!.validate()) {
-          await controller.signup();
-          await controller.addToDatabase(model);
-          controller.clearAllController();
-        }
+
+        await controller.signup();
+        await controller.addToDatabase(model);
+        controller.clearAllController();
       },
       style: ButtonStyle(
         shape: MaterialStateProperty.all(

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +30,7 @@ class ViewAccount extends GetView<Viewcontroller> {
                     return ModelClass.fromjson(
                         e.data() as Map<String, dynamic>);
                   }).toList();
+                  log(newList[0].id.toString());
                   controller.assignToController(newList);
                 }
                 return Container(

@@ -15,6 +15,7 @@ class UpdateButton extends GetView<Viewcontroller> {
         child: ElevatedButton(
           onPressed: () async {
             final model = ModelClass(
+              id: controller.id,
               age: controller.ageController.text.trim(),
               domain: controller.domainController.text.trim(),
               mob: controller.mobileController.text.trim(),

@@ -9,10 +9,15 @@ class SigninController extends GetxController {
   var isObscure = false.obs;
 
   Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailController.text.trim(),
-      password: passwordController.text.trim(),
-    );
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+    } catch (e) {
+      return Get.snackbar('', '',
+          messageText: Text(e.toString()), snackPosition: SnackPosition.BOTTOM);
+    }
   }
 
   // life cycle methods

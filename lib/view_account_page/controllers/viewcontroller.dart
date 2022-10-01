@@ -17,11 +17,16 @@ class Viewcontroller extends GetxController {
   late String id;
 
   updateToDatabase(ModelClass model) async {
-    final CollectionReference users = FirebaseFirestore.instance
-        .collection(FirebaseAuth.instance.currentUser!.email.toString());
-    final id = model.id;
-    log(id.toString());
-    await users.doc(id).update(model.toJson());
+    try {
+      final CollectionReference users = FirebaseFirestore.instance
+          .collection(FirebaseAuth.instance.currentUser!.email.toString());
+      final id = model.id;
+      log(id.toString());
+      await users.doc(id).update(model.toJson());
+    } catch (e) {
+      return Get.snackbar('', '',
+          messageText: Text(e.toString()), snackPosition: SnackPosition.BOTTOM);
+    }
   }
 
   assignToController(List<ModelClass> newList) {

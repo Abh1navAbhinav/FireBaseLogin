@@ -11,11 +11,13 @@ class TextFields extends GetView<SignupController> {
     required this.image,
     required this.controllers,
     required this.vaidator,
+    required this.keyboardType,
   }) : super(key: key);
   String hint;
   String image;
   String vaidator;
   TextEditingController controllers;
+  TextInputType keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class TextFields extends GetView<SignupController> {
         vertical: 15,
       ),
       child: TextFormField(
+        keyboardType: keyboardType,
         controller: controllers,
         decoration: InputDecoration(
           border: OutlineInputBorder(

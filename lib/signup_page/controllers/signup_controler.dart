@@ -14,19 +14,29 @@ class SignupController extends GetxController {
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   signup() async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: emailController.text.trim(),
-      password: passwordController.text.trim(),
-    );
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+    } catch (e) {
+      return Get.snackbar('', '',
+          messageText: Text(e.toString()), snackPosition: SnackPosition.BOTTOM);
+    }
   }
 
   addToDatabase(ModelClass model) async {
-    final CollectionReference users = FirebaseFirestore.instance
-        .collection(FirebaseAuth.instance.currentUser!.email.toString());
-    final generatedId = await users.add(model.toJson());
-    model.id = generatedId.id;
-    await users.doc(generatedId.id).update(model.toJson());
-    Get.back();
+    try {
+      final CollectionReference users = FirebaseFirestore.instance
+          .collection(FirebaseAuth.instance.currentUser!.email.toString());
+      final generatedId = await users.add(model.toJson());
+      model.id = generatedId.id;
+      await users.doc(generatedId.id).update(model.toJson());
+      Get.back();
+    } catch (e) {
+      return Get.snackbar('', '',
+          messageText: Text(e.toString()), snackPosition: SnackPosition.BOTTOM);
+    }
   }
 
   clearAllController() {
